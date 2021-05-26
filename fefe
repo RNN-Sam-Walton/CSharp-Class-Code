@@ -1,0 +1,90 @@
+using System;
+class MainClass {
+// The base Warlock class
+class Warlock{
+public string name = "Warlock Class";
+public string desc = "Basic Desc";
+private int level;
+//encapsulation of the level var
+public int charLevel {
+ 
+get //getter and setters for the char level
+{
+return level;
+}
+ 
+set
+{
+level = value;
+}
+ 
+}
+ 
+//adding a function to show polymorphism
+public virtual void WarlockSound() //notice the virtual keyword
+{
+Console.WriteLine("\nThe Warlock makes a strange magic sound");
+}
+}
+//A class the inherits from the Warlock class
+class Hunter : Warlock{
+public int size;
+//polymorphism notice the override keyword
+public override void WarlockSound()
+{
+Console.WriteLine("\nThe Hunter says: (nothing, cause he's sneaky)");
+}
+}
+//another class that takes info from the main Warlock class
+class Titan : Warlock{
+public int Strength;
+ 
+public override void WarlockSound()
+{
+Console.WriteLine("\nThe Titan says: SMASH");
+}
+ 
+}
+ 
+public static void Main (string[] args) {
+ 
+//declaring a new instance of a main Warlock class and printing out the base stats
+Warlock Jeff = new Warlock();
+Console.WriteLine(Jeff.name);
+Jeff.desc = "Stormcaller, Voidwalker, Dawnblade, Shadebinder";
+Console.WriteLine(Jeff.desc);
+Jeff.charLevel = 1320;//using charLevel instead of level becuase level is private
+Console.WriteLine(Jeff.charLevel);
+ 
+ 
+Console.WriteLine("\n ---------------------------------- \n");
+//an instance of a Hunter class using vars from both classes
+Hunter Bob = new Hunter();
+Bob.name = "Bob";
+Console.WriteLine(Bob.name);
+Bob.desc = "Arcstrider, Nightstalker, Gunslinger, Revenant";
+Console.WriteLine(Bob.desc);
+Bob.charLevel = 1180;
+Console.WriteLine(Bob.charLevel);//using charLevel instead of level becuase level is private
+ 
+ 
+Console.WriteLine("\n ---------------------------------- \n");
+//an instance of a Titan class using vars from both classes
+Titan Yeet = new Titan();
+Yeet.name = "Yeet";
+Console.WriteLine(Yeet.name);
+Yeet.desc = "Striker, Sentinel, Sunbreaker, Behemoth";
+Console.WriteLine(Yeet.desc);
+Yeet.charLevel = 1279;
+Console.WriteLine(Yeet.charLevel);//using charLevel instead of level becuase level is private
+Yeet.Strength = 10;
+Console.WriteLine(Yeet.Strength);
+ 
+ 
+//calling the same function from each class and seeing the difference
+Jeff.WarlockSound();
+Bob.WarlockSound();
+Yeet.WarlockSound();
+}
+ 
+}
